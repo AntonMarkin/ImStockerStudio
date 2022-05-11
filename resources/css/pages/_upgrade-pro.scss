@@ -1,0 +1,370 @@
+@import "../vars";
+
+.UpgradeToProDialog-header-badge{
+  display: inline-block;
+  background: $color-light-blue;
+  color: #FFF;
+  padding: 0px 5px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 4px;
+}
+.UpgradeToProDialog-content{
+  width: 800px;
+  height: 420px;
+  display: flex;
+}
+.UpgradeToProDialog-features{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+}
+
+
+.UpgradeToProDialog-subscribing{
+  width:300px;
+  margin-left: 30px;
+  background: #666;
+  color:#FFF;
+  padding:17px 20px;
+  border-radius: 4px;
+  margin-top: 32px;
+  font-size:16px;
+  display: flex;
+  flex-direction: column;
+}
+.UpgradeToProDialog-features-lines{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  text-align: left;
+}
+.UpgradeToProDialog-features-lines-vert1,
+.UpgradeToProDialog-features-lines-vert2{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  width: 1px;
+  background: #CCC;
+}
+.UpgradeToProDialog-features-lines-vert1{
+  right: 133px;
+}
+.UpgradeToProDialog-features-lines-vert2{
+  right: 66px;
+}
+.UpgradeToProDialog-features-line{
+  display: flex;
+  border-radius: 4px;
+  &:not(.UpgradeToProDialog-features-line-header):hover{
+    background: #fafafa;
+  }
+  &.state-selected,
+  &.state-selected:hover{
+    background: #ffe89b;
+  }
+}
+
+.UpgradeToProDialog-features-header{
+  flex: 1;
+}
+
+.UpgradeToProDialog-features-line-header{
+  font-size:12px;
+
+  .UpgradeToProDialog-features-plan{
+    border-left-color: transparent;
+  }
+  .UpgradeToProDialog-features-plan,
+  .UpgradeToProDialog-features-header{
+    padding: 8px;
+  }
+}
+
+.UpgradeToProDialog-features-plan{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50px;
+  border-left:1px solid #CCC;
+}
+
+.UpgradeToProDialog-features-plan,
+.UpgradeToProDialog-features-header{
+  padding:5px 8px;
+}
+
+.UpgradeToProDialog-features-one-title{
+  font-size:16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.UpgradeToProDialog-features-one-subtitle{
+  font-size:12px;
+}
+.UpgradeToProDialog-features-plan i.state-yes{
+  color:$color-green;
+}
+.UpgradeToProDialog-features-plan i.state-no{
+  color:$color-orange;
+}
+
+.UpgradeToProDialog-subscribing-description{
+  text-align: center;
+  p{
+    margin-top: 0;
+  }
+}
+.UpgradeToProDialog-plans{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.UpgradeToProDialog-plans-one{
+  text-align: center;
+  margin-bottom: 18px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+.UpgradeToProDialog-plans-one-button{
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 15px;
+  font-size: 18px;
+
+  box-sizing: border-box;
+  &.type-trial,
+  &.type-trial-static {
+    font-size:14px;
+    margin-bottom: 0;
+  }
+  &.type-trial-static {
+    cursor: default;
+    &:hover {
+      color: #FFF;
+      background: transparent;
+    }
+  }
+
+}
+.UpgradeToProDialog-subscribing-already{
+  border: 1px solid $color-green;
+  b{
+    color: $color-green;
+  }
+  background-color: #d9fddc;
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  height: 49px;
+  .UpgradeToProDialog-plans-one-subscribe{
+    line-height: 18px;
+  }
+}
+
+.UpgradeToProDialog-plans-one-tax{
+  font-size:14px;
+}
+.UpgradeToProDialog-yes,
+.UpgradeToProDialog-no{
+  width:24px;
+  height:24px;
+}
+.UpgradeToProDialog-yes{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z' fill='rgba(13,189,27,1)'/%3E%3C/svg%3E");
+}
+.UpgradeToProDialog-no{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z' fill='rgba(255,35,0,1)'/%3E%3C/svg%3E");
+}
+.UpgradeToProDialog-subscribing-description-PRO{
+  background-color: #5C81E0;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 0 3px;
+  position: relative;
+  top: 1px;
+}
+.UpgradeToProDialog-subscribing-date{
+  display:flex;
+  margin-bottom: 30px;
+}
+
+.UpgradeToProDialog-subscribing-date-num{
+  display: block;
+  text-align: center;
+}
+
+.UpgradeToProDialog-subscribing-date-days{
+  width:52px;
+  height:72px;
+  margin-left: 12px;
+  font-size:45px;
+  line-height: 52.73px;
+  font-style: normal;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.UpgradeToProDialog-subscribing-date-hours{
+  width:52px;
+  height:53px;
+  margin-left: 12px;
+  font-size:45px;
+  line-height: 52.73px;
+  font-style: normal;
+  font-weight: bold;
+  color: #FDFF93;
+}
+.UpgradeToProDialog-subscribing-date-min{
+  width:52px;
+  height:53px;
+  margin-left: 12px;
+  font-size:45px;
+  line-height: 52.73px;
+  font-style: normal;
+  font-weight: bold;
+  color: #FBFF3E;
+
+}
+.UpgradeToProDialog-subscribing-date-sec{
+  width:52px;
+  height:53px;
+  margin-left: 12px;
+  font-size:45px;
+  line-height: 52.73px;
+  font-style: normal;
+  font-weight: bold;
+  color: #FFC700;
+}
+.UpgradeToProDialog-subscribing-date-time{
+  font-size:20px;
+  margin: 11px 0px 0 9px;
+  line-height: 23.44px;
+}
+.UpgradeToProDialog-plans-one-subscribe{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  text-align: center;
+}
+.UpgradeToProDialog-subscribing-date-days-text{
+  color: #CCCCCC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align:center;
+}
+
+.payCheckoutPage{
+  margin: 80px auto;
+  background: #FFF;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.UpgradeToProDialog-content-plan {
+  width: 200px;
+  color: #FFF;
+  padding: 10px 20px 20px 20px;
+  border-radius: 4px;
+  //margin-top: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  &.type-3m,
+  &.type-3m_once,{
+    background:  #5C81E0;
+  }
+  &.type-1y,
+  &.type-1y_once{
+    background: #0DBD1B;
+  }
+}
+
+.UpgradeToProDialog-content-plan-back{
+  margin:0;
+  font-size: 16px;
+  line-height: 19px;
+  color:#FFF;
+  text-decoration: none;
+  font-weight: normal;
+  &:hover{
+    opacity: 0.9;
+  }
+}
+.UpgradeToProDialog-content-plan-time
+{
+  margin:18px 0 18px 0 !important;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+
+}
+hr{
+  margin: 0;
+  height: 0px;
+  border: 1px solid #FFFFFF;
+}
+.UpgradeToProDialog-content-sub-one.type-total{
+  font-size:20px
+}
+.UpgradeToProDialog-content-sub-one{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5px;
+}
+.UpgradeToProDialog-content-paddle{
+  flex:1;
+  margin-left: 10px;
+  overflow: auto;
+}
+.UpgradeToProDialog-content-recurring{
+  text-align: center;
+  margin-top: 25px;
+}
+
+.UpgradeToProDialog-alreadyHereText{
+  margin-bottom: 10px;
+}
+
+.UpgradeToProDialog-choosePlanText{
+  margin-bottom: 10px;
+}
+
+.UpgradeToProDialog-needLogin{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.8)
+}
+
+.UpgradeToProDialog-needLogin-message{
+  background: #5C81E0;
+  padding:20px;
+  border-radius: 4px;
+  color:#FFF;
+}

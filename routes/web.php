@@ -26,7 +26,7 @@ Route::get('/{lang}/tutorial', [ RoutesController::class, 'TutorialPage' ])->nam
 
 Route::get('/tutorial/update', [ RoutesController::class, 'TutorialUpdate' ])->name('tutorial_update');
 
-Route::get('/releases/latest/{os}',[ AppDownloadController::class, '' ]) ->name('latest');
+Route::get('/releases/latest/{os}',[ AppDownloadController::class, 'AppDownload' ]) ->name('download');
 
     //ZX\Router::AddRoute('/', __CLASS__ . "::Index");
     //ZX\Router::AddRoute('/ru', __CLASS__ . "::Index", ['lang' => 'ru']);

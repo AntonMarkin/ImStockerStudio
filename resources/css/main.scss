@@ -1,0 +1,68 @@
+@import "vars";
+@import "devices";
+@import "layout";
+@import "form";
+
+@import "./parts/SiteHeader";
+@import "./parts/SiteFooter";
+@import "./parts/SiteSidebar";
+
+
+html {
+  font: $site-font;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+html,
+body{
+  margin: 0px;
+}
+
+body{
+  background: $site-bg-body-color;
+  color:$site-text-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.shadowed-block{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.SiteHeader-logo{
+  background-image: url('./images/logo.png');
+}
+.SiteMain{
+  @include device-type(pc){
+    min-height: 500px;
+  }
+}
+.main-page-layout {
+  flex-direction: column !important;
+}
+.pro {
+  background: #4A629F;
+  border-radius: 4px;
+  color: white;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  height: 17px;
+  width: 28px;
+  padding: 2px 5px;
+  margin-left: 5px;
+  //top: -2px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+@import "./pages/index";
+@import "./pages/upgrade-pro";
+@import "./pages/_prices";
+@import "./pages/_tutorial";

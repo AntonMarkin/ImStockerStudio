@@ -1,0 +1,43 @@
+// Основные настройки
+$site-bg-body-color: #DDE3D9;   // Цвет фона для body
+$site-bg-main-color: #DDE3D9;   // Цвет фона основного контента
+$site-font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$site-font: 16px $site-font-family;
+$site-text-color: #3D3D3D;
+$site-text-contrast-color: #000;
+$site-border-outline-color: #E6E6E6;
+
+// Ссылки
+$site-a-color: #EC751D;
+$site-a-color-hover: lighten($site-a-color, 15%);
+
+// Цвета
+$color-light-blue: #5C81E0;
+$color-dark-blue: #4A629F;
+$color-dark-dark-blue: #2c3b61;
+$color-blue-2:#8592b1;
+$color-green: #0dbd1b;
+$color-dark-green: #02910f;
+$color-red: #91000d;
+$color-orange: #ff2300;
+
+$color-theme-dark-link: #7e90c1;
+$color-theme-dark-red: #EF4444;
+
+// Размеры типов экранов
+// mb - мобильные
+// tb - планшет
+// pc - компьютер
+$size-mb-max: 480px;
+$size-tb-min: $size-mb-max;
+$size-tb-max: 1200px;
+$size-pc-min: $size-tb-max;
+$size-large-pc-min: 1600px;
+
+// Размер сайта
+$site-size-content-max: 1596px;
+$site-size-min-padding: 12px;
+$site-top-header-height: 51px;
+$site-top-header-margin: 1px;
+
+$site-header-height:48px;

@@ -1,0 +1,49 @@
+@import "./layout-mixins";
+@import "./devices-mixins";
+
+.layout-center{
+    box-sizing: border-box;
+    @include device-type(pc) {
+        max-width:$site-size-content-max;
+        margin: 0px auto;
+        padding: 0px 20px;
+    }
+    @include device-type(not-pc) {
+        width:100%;
+        padding: 0px 10px;
+    }
+}
+
+.layout-main-cols{
+    @include layout-main-cols(290px, 20px);
+}
+
+.layout-2col-pc.type-col-right{
+    @include device-type(pc) {
+        @include layout-2col(right, 290px, 20px);
+    }
+    @include device-type(not-pc) {
+        .laypart-second{
+            display: none;
+        }
+    }
+}
+
+.layout-2col.type-col-right{
+    @include layout-2col(right, 290px, 20px);
+}
+
+.layout-2col-pc.type-col-left{
+    @include device-type(pc) {
+        @include layout-2col(left, 290px, 20px);
+    }
+    @include device-type(not-pc) {
+        .laypart-second{
+            display: none;
+        }
+    }
+}
+
+.layout-2col.type-col-left{
+    @include layout-2col(left, 290px, 20px);
+}

@@ -1,0 +1,116 @@
+@import "./_vars.scss";
+
+@mixin button-blue {
+    background-color: $color-light-blue;
+    &:focus {
+        background-color: lighten($color-light-blue, 2%);
+    }
+
+    &:hover {
+        background-color: lighten($color-light-blue, 5%);
+    }
+    .site-theme-dark & {
+        background-color: $color-dark-blue;
+        color: #FFF;
+
+        &:focus {
+            background-color: lighten($color-dark-blue, 2%);
+        }
+
+        &:hover {
+            background-color: lighten($color-dark-blue, 5%);
+            color: #FFF;
+        }
+    }
+}
+
+@mixin button-green {
+    background-color: $color-green;
+    &:focus {
+        background-color: lighten($color-green, 1%);
+    }
+    &:hover {
+        background-color: lighten($color-green, 3%);
+    }
+    &.state-busy {
+        background-color: $color-green;
+        cursor: wait;
+    }
+    .site-theme-dark & {
+        background-color: $color-dark-green;
+
+        &:focus {
+            background-color: lighten($color-dark-green, 2%);
+        }
+
+        &:hover {
+            background-color: lighten($color-dark-green, 5%);
+        }
+    }
+}
+
+@mixin button-white-outline {
+    padding: 6px 14px;
+    border: 1px solid #FFF;
+    background-color: transparent;
+    &:hover {
+        background-color: #FFF;
+        color: $color-dark-blue;
+        text-shadow: none;
+    }
+}
+
+@mixin button-outline($color) {
+    padding: 6px 14px;
+    border: 1px solid $color;
+    color: $color;
+    background-color: transparent;
+    text-shadow: none;
+    &:hover {
+        background-color: $color;
+        color: #FFF;
+        text-shadow: none;
+    }
+    &:disabled,
+    &:disabled:hover {
+        background-color: rgba(158, 158, 158, 0.68);
+        color: #FFF;
+        cursor: default;
+        border-color: rgba(158, 158, 158, 0.68);
+    }
+}
+
+@mixin button-blue-outline {
+    @include button-outline($color-light-blue);
+    .site-theme-dark & {
+        @include button-outline(lighten($color-dark-blue, 5%));
+    }
+}
+
+@mixin button-red-outline {
+    @include button-outline($color-red);
+    .site-theme-dark & {
+        @include button-outline($color-theme-dark-red);
+    }
+}
+
+
+@mixin button-green-outline {
+    @include button-outline($color-green);
+    .site-theme-dark & {
+        @include button-outline($color-green);
+    }
+}
+
+@mixin button-gray-outline {
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid #AAA;
+    background: transparent;
+    color:$site-text-color;
+    text-shadow: none;
+    &:hover {
+        background-color: #AAA;
+        color:#FFF;
+    }
+}

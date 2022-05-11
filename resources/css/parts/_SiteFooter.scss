@@ -1,0 +1,103 @@
+@import "../vars";
+@import "../layout-mixins";
+@import "../devices-mixins";
+
+.SiteFooter{
+    @include clear-after;
+    margin-top: 92px;
+    padding-bottom: 20px;
+    background: #666666;
+
+    .SiteFooter-copyright{
+        //padding:0px 20px;
+        margin-bottom: 11px;
+        margin-top: 49px;
+        font-size: 12px;
+        line-height: 30px;
+        vertical-align: middle;
+        color: #FAFAFA;    }
+
+        .footerLink-contacts {
+            display: flex;
+            flex-direction: row;
+
+            .ims-cntc, .ims-cntc-studio {
+                display: flex;
+                flex-direction: column;
+                margin-right: 100px;
+                margin-top: 30px;
+
+                .footer-links {
+                    text-decoration: none;
+                    color: #CCCCCC;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 16px;
+                    margin-bottom: 12px;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .footerLink-head {
+                color: #FAFAFA;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 19px;
+                margin-bottom: 12px;
+                text-decoration: none;
+            }
+        }
+
+    .SiteFooter-social{
+        float: right;
+        position: relative;
+        //top: -155px;
+    }
+
+    @include device-type(not-pc){
+        text-align: center;
+
+        .SiteFooter-copyright{
+            padding:0px;
+        }
+        .SiteFooter-social{
+            float: none;
+        }
+    }
+}
+
+.SiteFooter-social-vk,
+.SiteFooter-social-facebook,
+.SiteFooter-social-instagram{
+    display: inline-block;
+    margin-right: 10px;
+    a{
+        color: #FFF;
+        background: #4a76a8;
+        border-radius: 4px;
+        padding: 5px 20px;
+        position: relative;
+        top: -20px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+}
+.SiteFooter-social-facebook{
+    a{
+        background: #4267B2;
+    }
+}
+.SiteFooter-social-vk{
+    a{
+        background: #4a76a8;
+    }
+}
+.SiteFooter-social-instagram{
+    a{
+        background: #bd6ccc;
+        color: #FFF !important;
+    }
+}

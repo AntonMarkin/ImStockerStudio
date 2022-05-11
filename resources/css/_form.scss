@@ -1,0 +1,176 @@
+@import "./_vars.scss";
+@import "./form-mixins";
+
+input,
+textarea,
+select,
+button {
+    font-family: $site-font-family;
+    outline: none;
+}
+
+.button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
+    cursor: pointer;
+    border: 0px;
+    text-align: center;
+    padding: 7px 12px;
+    color: #FFF;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+
+    &.style-big {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &.state-disabled,
+    &.state-disabled:hover {
+        background-color: rgba(158, 158, 158, 0.68);
+        cursor: default;
+    }
+}
+
+.button-blue {
+    @include button-blue;
+}
+
+.button-green {
+    @include button-green;
+}
+
+.button-white-outline,
+button.button-white-outline,
+input.button-white-outline{
+    @include button-white-outline;
+}
+
+.button-blue-outline {
+    @include button-blue-outline;
+}
+
+.button-red-outline,
+button.button-red-outline ,
+input.button-red-outline {
+    @include button-red-outline;
+}
+
+.button-green-outline,
+button.button-green-outline ,
+input.button-green-outline {
+    @include button-green-outline;
+}
+
+.button-gray-outline {
+    @include button-gray-outline;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='password'],
+input[type='number'],
+textarea,
+.input-like{
+    background: #EEEEEE;
+    border: none;
+    padding: 7px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 4px;
+    word-spacing: 0;
+
+    &:disabled {
+        background: #E6E6E6;
+    }
+}
+
+.button {
+    .fa + span {
+        margin-left: 2px;
+    }
+
+    &.style-big .fa + span {
+        margin-left: 7px;
+    }
+}
+
+.button.state-loading {
+    animation: button-loading-anim-blue 0.5s linear infinite alternate;
+}
+
+.button.state-busy{
+    animation: button-state-busy 0.5s linear infinite alternate;
+}
+
+@keyframes button-state-busy {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.7;
+    }
+}
+
+select{
+    background: #EEEEEE;
+    border: none;
+    padding: 9px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+@keyframes button-loading-anim-blue {
+    0% {
+        background-color: $color-light-blue;
+    }
+    100% {
+        background-color: lighten($color-light-blue, 10%);
+    }
+}
+
+
+@keyframes button-loading-anim-dark-blue {
+    0% {
+        background-color: $color-dark-blue;
+    }
+    100% {
+        background-color: lighten($color-dark-blue, 10%);
+    }
+}
+
+.site-theme-dark {
+
+    .button.state-loading {
+        animation-name: button-loading-anim-dark-blue;
+    }
+
+
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='password'],
+    textarea {
+        background: #666;
+        color: #eee;
+
+        &:disabled {
+            background: #444;
+        }
+
+        &::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+    }
+}

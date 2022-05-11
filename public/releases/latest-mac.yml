@@ -1,0 +1,12 @@
+version: 1.0.5
+files:
+  - url: ImsStudio-1.0.5-mac.zip
+    sha512: 2PUGJ6lkHTQIle/URJZl166dm14FEktkIsrRbGoL+NHItKLN7fZ5F15LNEC7M5lGJTh/3CT9kqF3JBukG0WkMw==
+    size: 98193206
+    blockMapSize: 103291
+  - url: ImsStudio-1.0.5.dmg
+    sha512: Q1n0/69zb9cSiQEloL0pzj7lyflkUSi1HLixoyWIpfKVUTU6DZBTgMA8yIybCS0mtlIWGKWTGkGk4w7zLHjlhA==
+    size: 101219833
+path: ImsStudio-1.0.5-mac.zip
+sha512: 2PUGJ6lkHTQIle/URJZl166dm14FEktkIsrRbGoL+NHItKLN7fZ5F15LNEC7M5lGJTh/3CT9kqF3JBukG0WkMw==
+releaseDate: '2021-07-31T13:08:53.812Z'

@@ -1,0 +1,122 @@
+@import "../vars";
+@import "../layout-mixins";
+@import "../devices-mixins";
+
+@include device-type(pc) {
+    .SiteSidebar {
+        display: none;
+    }
+}
+
+@include device-type(not-pc) {
+    .state-openSidebar .SiteSidebar {
+        transform: translateX(0);
+    }
+    .SiteSidebar {
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: block;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+    .SiteSidebar-menu {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 80%;
+        overflow: auto;
+        box-shadow: 3px 3px 7px rgba(0, 0, 0, .5);
+        background: $color-dark-blue;
+
+    }
+    .SiteSidebar-menu-one {
+        display: block;
+        padding: 15px;
+        color: #FFF;
+        text-decoration: none;
+        border-bottom: 1px solid #637bb7;
+
+        &:hover,
+        &.state-active,
+        &.nuxt-link-active {
+            background: $color-light-blue;
+        }
+
+        &.type-no-link:not(:hover) {
+            background: transparent !important;
+        }
+    }
+
+    .SiteSidebar-menu-lang-switch {
+        display: flex;
+        border-bottom: 1px solid #637bb7;
+    }
+
+    .SiteSidebar-menu-lang-switch-options {
+        display: flex;
+        flex: 1;
+    }
+
+    .SiteSidebar-menu-lang-switch-caption {
+        background: $color-light-blue;
+        border-right: 1px solid #637bb7;
+    }
+
+    .SiteSidebar-menu-lang-switch-caption,
+    .SiteSidebar-menu-lang-switch-options-one {
+        color: #FFF;
+        padding: 15px;
+    }
+
+    .SiteSidebar-menu-lang-switch-options-one {
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &.state-selected {
+            background: $color-light-blue;
+        }
+    }
+
+
+    .site-theme-dark {
+
+
+        .SiteSidebar-menu {
+            background: $color-dark-dark-blue;
+        }
+
+        .SiteSidebar-menu-one {
+            border-bottom-color: lighten($color-dark-dark-blue, 5%);
+            color: #eee;
+
+            &:hover,
+            &.state-active,
+            &.nuxt-link-active {
+                background: $color-dark-blue;
+            }
+        }
+
+        .SiteSidebar-menu-lang-switch {
+            border-bottom-color: lighten($color-dark-dark-blue, 5%);
+        }
+
+        .SiteSidebar-menu-lang-switch-caption {
+            background: $color-dark-blue;
+            border-right-color: lighten($color-dark-dark-blue, 5%);
+        }
+
+
+        .SiteSidebar-menu-lang-switch-options-one {
+            color: #eee;
+
+            &.state-selected {
+                background: $color-dark-blue;
+            }
+        }
+    }
+}
