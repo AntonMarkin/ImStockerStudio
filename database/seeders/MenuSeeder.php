@@ -16,12 +16,8 @@ class MenuSeeder extends Seeder
     {
 
         $menuElements1 = [
-            ['home', '', true, false, false],
-            ['Studio', '/', true, false, true],
-            ['Keyworder', '/keyworder', true, false, false],
             ['prices', '/prices', true, true, true],
             ['tutorial', '/tutorial', true, true, true],
-            ['cabinet', '/account/signin', false, true, true],
             ['feedback', '/page/feedback?product=ims-studio', true, false, false],
             ['blog', '/blog', true, true, false],
             ['terms', '/page/terms', false, true, false],

@@ -10,5 +10,7 @@ return [
     'feature3' => 'Сохраняйте метаданные в файлы',
     'feature4' => 'С легкостью работайте с JPG и EPS файлами',
     'learnMoreLink' => 'https://imstocker.com/ru/blog/48-meet-imstocker-studio',
-    'learnMoreTitle' => 'Узнайте больше о возможностях ImStocker Studio'
+    'learnMoreTitle' => 'Узнайте больше о возможностях ImStocker Studio',
+    'imsKeyworderSubCaption' => "Подбор ключевых слов онлайн",
+    'imsStudioSubCaption' => "Программа подготовки файлов"
 ];

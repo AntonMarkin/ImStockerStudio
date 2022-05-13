@@ -10,5 +10,7 @@ return [
     'feature3' => 'Save metadata into files',
     'feature4' => 'Work with JPG and EPS files easily',
     'learnMoreLink' => 'https://imstocker.com/en/blog/47-meet-imstocker-studio',
-    'learnMoreTitle' => 'Learn more about ImStocker Studio features'
+    'learnMoreTitle' => 'Learn more about ImStocker Studio features',
+    'imsKeyworderSubCaption'=> "Online keywording service",
+    'imsStudioSubCaption' => "File manager for microstock contributor"
 ];

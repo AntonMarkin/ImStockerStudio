@@ -9,4 +9,5 @@ class MenuElement extends Model
 {
     use HasFactory;
     protected $table = 'menu_elements';
+    public $timestamps = false;
 }

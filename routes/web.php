@@ -16,15 +16,12 @@ use App\Http\Controllers\AppDownloadController;
 */
 
 Route::redirect('/', '/'.App::currentLocale());
-Route::get('/{lang}', [ RoutesController::class, 'IndexPage' ])->name('index');
 
-Route::get('/{lang}/license', [ RoutesController::class, 'LicensePage' ])->name('license');
+Route::get('/{lang}', [ RoutesController::class, 'IndexPage' ])->name('index');
 
 Route::get('/{lang}/prices', [ RoutesController::class, 'PricesPage' ])->name('prices');
 
 Route::get('/{lang}/tutorial', [ RoutesController::class, 'TutorialPage' ])->name('tutorial');
-
-Route::get('/tutorial/update', [ RoutesController::class, 'TutorialUpdate' ])->name('tutorial_update');
 
 Route::get('/releases/latest/{os}',[ AppDownloadController::class, 'AppDownload' ]) ->name('download');
 

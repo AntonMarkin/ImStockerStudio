@@ -20,7 +20,6 @@ class CreateMenuElementsTable extends Migration
             $table->boolean('in_header');
             $table->boolean('in_footer');
             $table->boolean('is_studio');
-            $table->timestamps();
         });
     }
 
