@@ -584,11 +584,22 @@ textarea:disabled,
 }
 
 .button.state-loading {
-  animation: button-loading-anim-blue 0.5s linear infinite alternate;
+  -webkit-animation: button-loading-anim-blue 0.5s linear infinite alternate;
+          animation: button-loading-anim-blue 0.5s linear infinite alternate;
 }
 
 .button.state-busy {
-  animation: button-state-busy 0.5s linear infinite alternate;
+  -webkit-animation: button-state-busy 0.5s linear infinite alternate;
+          animation: button-state-busy 0.5s linear infinite alternate;
+}
+
+@-webkit-keyframes button-state-busy {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
 }
 
 @keyframes button-state-busy {
@@ -610,12 +621,30 @@ select {
   border-radius: 4px;
 }
 
+@-webkit-keyframes button-loading-anim-blue {
+  0% {
+    background-color: #5C81E0;
+  }
+  100% {
+    background-color: #87a2e8;
+  }
+}
+
 @keyframes button-loading-anim-blue {
   0% {
     background-color: #5C81E0;
   }
   100% {
     background-color: #87a2e8;
+  }
+}
+
+@-webkit-keyframes button-loading-anim-dark-blue {
+  0% {
+    background-color: #4A629F;
+  }
+  100% {
+    background-color: #657cb7;
   }
 }
 
@@ -629,7 +658,8 @@ select {
 }
 
 .site-theme-dark .button.state-loading {
-  animation-name: button-loading-anim-dark-blue;
+  -webkit-animation-name: button-loading-anim-dark-blue;
+          animation-name: button-loading-anim-dark-blue;
 }
 
 .site-theme-dark input[type='text'],
@@ -647,6 +677,16 @@ select {
 .site-theme-dark input[type='password']:disabled,
 .site-theme-dark textarea:disabled {
   background: #444;
+}
+
+.site-theme-dark input[type='text']::-moz-placeholder, .site-theme-dark input[type='email']::-moz-placeholder, .site-theme-dark input[type='tel']::-moz-placeholder, .site-theme-dark input[type='password']::-moz-placeholder, .site-theme-dark textarea::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.site-theme-dark input[type='text']:-ms-input-placeholder, .site-theme-dark input[type='email']:-ms-input-placeholder, .site-theme-dark input[type='tel']:-ms-input-placeholder, .site-theme-dark input[type='password']:-ms-input-placeholder, .site-theme-dark textarea:-ms-input-placeholder {
+  color: #999;
+  opacity: 1;
 }
 
 .site-theme-dark input[type='text']::placeholder,
@@ -1493,7 +1533,6 @@ body {
   position: relative;
   margin-right: -20px;
   top: -3px;
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.1));
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.1));
 }
 
@@ -2894,9 +2933,12 @@ hr {
 }
 
 .tutorialPage .main-section .main-content .nav-bar-left-section ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -2938,6 +2980,8 @@ hr {
 }
 
 .tutorialPage-menu {
+  position: -webkit-sticky;
   position: sticky;
   top: 60px;
 }
+

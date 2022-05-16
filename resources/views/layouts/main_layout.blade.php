@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{$lang['current']}}">
+<html lang="{{\Illuminate\Support\Facades\App::currentLocale()}}">
 <head>
     <title>{{__('seo.title')}}</title>
     <meta charset="utf-8">
@@ -16,19 +16,18 @@
     <meta name="twitter:card" content="{{__('seo.title')}}">
     <meta name="twitter:site" content="studio.imstocker.com">
     <meta name="twitter:creator" content="@imstocker">
-    <link rel="icon" type="image/x-icon" href="storage/images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="public/css/app.css?220211_1">
-
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 
 </head>
 <body>
-<!--{<cookie_consent.tpl if($main.user_is_eea_county)>}}-->
-<!-- Yandex.Metrika counter -->
+<!--{<cookie_consent.tpl if($main.user_is_eea_county)>}}
+Yandex.Metrika counter
 <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () {
             (m[i].a = m[i].a || []).push(arguments)
-        };
+        }
         m[i].l = 1 * new Date();
         k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
     })
@@ -41,7 +40,7 @@
         webvisor: true
     });
 </script>
-
+-->
 <!--
 if(!$main.user_is_eea_county)}}
 <noscript>
@@ -52,16 +51,20 @@ endif
 
 <!-- /Yandex.Metrika counter -->
 
-<div class="site-lang-{{$lang['current']}}">
+<script type="text/javascript" src="{{asset('js/app.js')}}">
+    siteInit();
+</script>
+
+<div class="site-lang-{{\Illuminate\Support\Facades\App::currentLocale()}}">
     <header class="SiteHeader shadowed-block">
         <div class="SiteHeader-left">
-            <a href="https://imstocker.com/{{$lang['current']}}"
+            <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}"
                class="SiteHeader-logo"></a>
             <div class="SiteHeader-menu">
                 <a href="/" class="SiteHeader-menu-one state-active" title="{{__('pageIndex.imsStudioSubCaption')}}">
                     <span class="SiteHeader-menu-one-caption">Studio</span>
                 </a>
-                <a href="https://imstocker.com/{{$lang['current']}}/keyworder"
+                <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}/keyworder"
                    class="SiteHeader-menu-one" title="{{__('pageIndex.imsKeyworderSubCaption')}}">
                     <span class="SiteHeader-menu-one-caption">Keyworder</span>
                 </a>
@@ -76,25 +79,28 @@ endif
 
             @foreach($headerMenu as $element)
                 @if($element->in_header && $element->is_studio)
-                    <a href="/{{$lang['current']}}{{$element->url}}"
+                    <a href="/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}"
                        class="SiteHeader-menu-one ">
                         <span class="SiteHeader-menu-one-caption">{{__('menu.'.$element->name)}}</span>
                     </a>
                 @elseif($element->in_header && !$element->is_studio)
-                    <a href="https://imstocker.com/{{$lang['current']}}{{$element->url}}" class="SiteHeader-menu-one ">
+                    <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="SiteHeader-menu-one ">
                         <span class="SiteHeader-menu-one-caption">{{__('menu.'.$element->name)}}</span>
                     </a>
                 @endif
             @endforeach
 
             <div class="SiteHeader-menu-one state-active SiteHeader-menu-lang-switch">
-                <span class="SiteHeader-menu-one-caption">{{$lang['current']}}</span>
+                <span class="SiteHeader-menu-one-caption">{{\Illuminate\Support\Facades\App::currentLocale()}}</span>
+                @foreach(\Illuminate\Support\Facades\Config::get('app.locales') as $locale)
+                    @if(\Illuminate\Support\Facades\App::currentLocale() != $locale)
                 <div class="SiteHeader-menu-lang-switch-options">
-                    <a rel="nofollow" href="/{{$lang['noncurrent']}}" class="SiteHeader-menu-lang-switch-options-one">
-                        {{$lang['noncurrent']}}
+                    <a rel="nofollow" href="/setlang/{{$locale}}" class="SiteHeader-menu-lang-switch-options-one">
+                        {{$locale}}
                     </a>
                 </div>
-
+                    @endif
+                @endforeach
             </div>
             <div class="SiteHeader-menu-sidebarButton" onclick="sidebarToggle()">
                 <div class="SiteHeader-menu-sidebarButton-bar"></div>
@@ -115,7 +121,7 @@ endif
                     <a href="https://imstocker.com" class="footerLink-head">ImStocker</a>
                     @foreach($footerMenu as $element)
                         @if($element->in_footer && !$element->is_studio)
-                            <a href="https://imstocker.com/{{$lang['current']}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
+                            <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
                         @endif
                     @endforeach
                 </div>
@@ -124,10 +130,10 @@ endif
                     <a href="/" class="footerLink-head">ImStocker Studio</a>
                     @foreach($footerMenu as $element)
                         @if($element->in_footer && $element->is_studio)
-                            <a href="/{{$lang['current']}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
+                            <a href="/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
                         @endif
                     @endforeach
-                    <a href="https://imstocker.com/{{$lang['current']}}/account/cabinet" class="footer-links">{{__('menu.cabinet')}}</a>
+                    <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}/account/cabinet" class="footer-links">{{__('menu.cabinet')}}</a>
                 </div>
             </div>
 
@@ -140,7 +146,7 @@ endif
                         Facebook
                     </a>
                 </div>
-                @if($lang['current'] == 'ru')
+                @if(\Illuminate\Support\Facades\App::isLocal('ru'))
                     <div class="SiteFooter-social-vk">
                         <a href="https://vk.com/imstockercom" target="_blank" rel="nofollow">
                             ВКонтакте
@@ -151,7 +157,7 @@ endif
                             Instagram
                         </a>
                     </div>
-                @elseif($lang['current'] == 'en')
+                @elseif(\Illuminate\Support\Facades\App::isLocal('en'))
                     <div class="SiteFooter-social-instagram">
                         <a href="https://www.instagram.com/imstockercom/" target="_blank" rel="nofollow">
                             Instagram
@@ -212,10 +218,7 @@ endif
             {/list}}
         </div>
     </div>-->
-    <script type="text/javascript" src="/js/main.js?210624_1"></script>
-    <script>
-        siteInit();
-    </script>
+
 </div>
 </body>
 </html>

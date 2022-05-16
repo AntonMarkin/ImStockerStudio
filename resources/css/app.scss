@@ -3,9 +3,9 @@
 @import "layout";
 @import "form";
 
-@import "./parts/SiteHeader";
-@import "./parts/SiteFooter";
-@import "./parts/SiteSidebar";
+@import "parts/SiteHeader";
+@import "parts/SiteFooter";
+@import "parts/SiteSidebar";
 
 
 html {
@@ -35,7 +35,7 @@ body{
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .SiteHeader-logo{
-  background-image: url('./images/logo.png');
+  background-image: url('/storage/images/logo.png');
 }
 .SiteMain{
   @include device-type(pc){
@@ -62,7 +62,7 @@ body{
   text-transform: uppercase;
 }
 
-@import "./pages/index";
-@import "./pages/upgrade-pro";
-@import "./pages/_prices";
-@import "./pages/_tutorial";
+@import "pages/index";
+@import "pages/upgrade-pro";
+@import "pages/_prices";
+@import "pages/_tutorial";

@@ -24,42 +24,30 @@ class RoutesController extends Controller
             ->get();
         return $headerMenu;
     }
-    public function SetLang()
-    {
-        App::setLocale('ru');
-        return [
-            'current' => 'ru',
-            'noncurrent' => 'en',
-        ];
-    }
 
-    public function IndexPage(Request $request)
+    public function IndexPage()
     {
-
-        $lang = $this->SetLang();
         $headerMenu = $this->GetHeaderMenu();
         $footerMenu = $this->GetFooterMenu();
         $latestInfo = AppDownloadController::GetLatestInfo();
 
-        return view('index_page', compact('latestInfo', 'footerMenu', 'headerMenu', 'lang'));
+        return view('index_page', compact('latestInfo', 'footerMenu', 'headerMenu'));
     }
     public function PricesPage()
     {
-        $lang = $this->SetLang();
         $headerMenu = $this->GetHeaderMenu();
         $footerMenu = $this->GetFooterMenu();
         $productFeatures = PricesController::GetProFeatures(null, 'studio');
 
-        return view('prices_page', compact('footerMenu', 'headerMenu', 'lang', 'productFeatures'));
+        return view('prices_page', compact('footerMenu', 'headerMenu', 'productFeatures'));
     }
     public function TutorialPage()
     {
-        $lang = $this->SetLang();
         $headerMenu = $this->GetHeaderMenu();
         $footerMenu = $this->GetFooterMenu();
         $tutorialMenu = TutorialController::GetTutorialMenu();
         $tutorialContent = TutorialController::GetTutorialContent();
 
-        return view('tutorial_page', compact('tutorialContent', 'tutorialMenu', 'headerMenu', 'footerMenu', 'lang'));
+        return view('tutorial_page', compact('tutorialContent', 'tutorialMenu', 'headerMenu', 'footerMenu'));
     }
 }

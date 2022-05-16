@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutesController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AppDownloadController;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +16,16 @@ use App\Http\Controllers\AppDownloadController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/setlang/{lang}', function ($locale) {
+    if (in_array($locale, Config::get('app.locales')))
+    {
+        Session::put('locale', $locale);
+    }
+    return redirect()->back();
+});
 
 Route::redirect('/', '/'.App::currentLocale());
-
-Route::get('/{lang}', [ RoutesController::class, 'IndexPage' ])->name('index');
+Route::get('/{land}', [ RoutesController::class, 'IndexPage' ])->name('index');
 
 Route::get('/{lang}/prices', [ RoutesController::class, 'PricesPage' ])->name('prices');
 

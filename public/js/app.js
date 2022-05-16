@@ -2062,6 +2062,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./main */ "./resources/js/main.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2092,6 +2094,154 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/***/ (() => {
+
+function siteInit() {
+  initDownloading();
+  initTutorialMenu();
+}
+
+function reachGoal(goal) {
+  try {
+    ym(21447229, 'reachGoal', goal);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function initDownloading() {
+  var downloading_win = document.querySelector('.index-appBlock-download.type-win');
+  var downloading_mac = document.querySelector('.index-appBlock-download.type-mac');
+  if (!downloading_win || !downloading_mac) return;
+
+  function switchDownload(mac) {
+    if (mac) {
+      downloading_win.style.display = 'none';
+      downloading_mac.style.display = 'block';
+    } else {
+      downloading_win.style.display = 'block';
+      downloading_mac.style.display = 'none';
+    }
+  }
+
+  var switch_mac = downloading_win ? downloading_win.querySelector('.index-appBlock-download-selector-not-active') : null;
+  if (switch_mac) switch_mac.onclick = function () {
+    switchDownload(true);
+  };
+  var switch_win = downloading_mac ? downloading_mac.querySelector('.index-appBlock-download-selector-not-active') : null;
+  if (switch_win) switch_win.onclick = function () {
+    switchDownload(false);
+  };
+  var mac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+  switchDownload(mac);
+}
+
+function sidebarToggle() {
+  if (nodeHasClass(document.body)) nodeRemoveClass(document.body, "state-openSidebar");else nodeAddClass(document.body, "state-openSidebar");
+}
+
+function sidebarClose() {
+  nodeRemoveClass(document.body, "state-openSidebar");
+}
+
+function nodeHasClass(node, class_name) {
+  if (!node) return false;
+
+  if (node.classList !== undefined) {
+    if (node.classList.contains(class_name)) return true;
+  } else if (node.className === undefined) return false;else if (node.className === class_name) return true;else {
+    // check all classes
+    var classes = node.className.split(/\s/);
+
+    if (classes.some(function (c) {
+      return c.trim() === class_name;
+    })) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function nodeAddClass(node, class_name) {
+  if (!node || !class_name) return;
+
+  if (node.classList !== undefined) {
+    node.classList.add(class_name);
+  } else if (!nodeHasClass(node, class_name)) {
+    var classes = node.className.split(/\s/);
+    classes.push(class_name);
+    node.className = classes.join(" ");
+  }
+}
+
+function nodeRemoveClass(node, class_name) {
+  if (!node) return;
+
+  if (node.classList !== undefined) {
+    node.classList.remove(class_name);
+  } else if (nodeHasClass(node, class_name)) {
+    var classes = node.className.split(/\s/);
+    var ind = classes.indexOf(class_name);
+    if (ind >= 0) classes.splice(ind, 1);
+    node.className = classes.join(" ");
+  }
+}
+
+function initTutorialMenu() {
+  var tutorial_page = document.querySelector('.tutorialPage');
+  if (!tutorial_page) return;
+  var scroll_anim_start_y = null;
+  var scroll_anim_start_time = null;
+  var scroll_anim_end_y = null;
+  var ANIM_TIME = 600;
+
+  function scroll_to_header(hash) {
+    if (!hash || hash[0] !== '#') return;
+
+    try {
+      var target_header = tutorial_page.querySelector(hash);
+      if (!target_header) return;
+      var target_rect = target_header.getBoundingClientRect();
+      scroll_anim_start_y = window.scrollY;
+      scroll_anim_end_y = Math.round(window.scrollY + target_rect.y - 60);
+      scroll_anim_start_time = Date.now();
+      window.requestAnimationFrame(scroll_step);
+    } catch (err) {
+      console.error('scroll_to_header', err);
+    }
+  }
+
+  function scroll_step() {
+    var dy = scroll_anim_end_y - scroll_anim_start_y;
+    var dt = Date.now() - scroll_anim_start_time;
+
+    if (dt >= ANIM_TIME) {
+      window.scrollTo(0, scroll_anim_end_y);
+      return;
+    }
+
+    window.scrollTo(0, Math.round(scroll_anim_start_y + dy * dt / ANIM_TIME));
+    window.requestAnimationFrame(scroll_step);
+  }
+
+  var tutorial_menu = tutorial_page.querySelector('.tutorialPage-menu');
+  tutorial_menu.addEventListener('click', function (event) {
+    if (nodeHasClass(event.target, 'tutorialPage-menu-link')) {
+      var hash = event.target.href.match(/#(.*?)$/);
+      if (!hash) return;
+      scroll_to_header('#' + hash[1]);
+      event.preventDefault();
+    }
+  });
+}
 
 /***/ }),
 
@@ -19307,10 +19457,23 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
+/***/ "./resources/css/app.scss":
+/*!********************************!*\
+  !*** ./resources/css/app.scss ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/main.css":
+/*!********************************!*\
+  !*** ./resources/css/main.css ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19636,6 +19799,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/main": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -19686,8 +19850,9 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/css/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/css/main.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

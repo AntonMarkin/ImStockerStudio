@@ -14,7 +14,6 @@
                     </div>
                 </div>
                 <div class="main-box">
-
                     {{{$tutorialContent}}}
                 </div>
             </div>

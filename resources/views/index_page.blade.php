@@ -86,7 +86,7 @@
             </div>
             <div class="index-appBlock-screen-area">
                 <div class="index-appBlock-screen">
-                    <img src="/images/app_screen_{{\Illuminate\Support\Facades\App::currentLocale()}}.png?210626">
+                    <img src="{{'storage/images/app_screen_'.\Illuminate\Support\Facades\App::currentLocale().'.png?210626'}}">
                 </div>
             </div>
         </div>
