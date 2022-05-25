@@ -14,6 +14,7 @@ class RoutesController extends Controller
     {
         $footerMenu = DB::table('menu_elements')
             ->where('in_footer', '=',1)
+            ->orderBy('order')
             ->get();
         return $footerMenu;
     }
@@ -21,6 +22,7 @@ class RoutesController extends Controller
     {
         $headerMenu = DB::table('menu_elements')
             ->where('in_header', '=',1)
+            ->orderBy('order')
             ->get();
         return $headerMenu;
     }
@@ -38,8 +40,9 @@ class RoutesController extends Controller
         $headerMenu = $this->GetHeaderMenu();
         $footerMenu = $this->GetFooterMenu();
         $productFeatures = PricesController::GetProFeatures(null, 'studio');
+        $productPlans = PricesController::GetProductPlans();
 
-        return view('prices_page', compact('footerMenu', 'headerMenu', 'productFeatures'));
+        return view('prices_page', compact('footerMenu', 'headerMenu', 'productFeatures','productPlans'));
     }
     public function TutorialPage()
     {

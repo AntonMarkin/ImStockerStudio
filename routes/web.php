@@ -21,11 +21,13 @@ Route::get('/setlang/{lang}', function ($locale) {
     {
         Session::put('locale', $locale);
     }
-    return redirect()->back();
+    $route = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
+    return redirect()->route($route, ['lang' => $locale]);
 });
 
-Route::redirect('/', '/'.App::currentLocale());
-Route::get('/{land}', [ RoutesController::class, 'IndexPage' ])->name('index');
+Route::redirect('/', '/'.substr(request()->server('HTTP_ACCEPT_LANGUAGE'), 0, 2));
+
+Route::get('/{lang}', [ RoutesController::class, 'IndexPage' ])->name('index');
 
 Route::get('/{lang}/prices', [ RoutesController::class, 'PricesPage' ])->name('prices');
 
@@ -33,13 +35,4 @@ Route::get('/{lang}/tutorial', [ RoutesController::class, 'TutorialPage' ])->nam
 
 Route::get('/releases/latest/{os}',[ AppDownloadController::class, 'AppDownload' ]) ->name('download');
 
-    //ZX\Router::AddRoute('/', __CLASS__ . "::Index");
-    //ZX\Router::AddRoute('/ru', __CLASS__ . "::Index", ['lang' => 'ru']);
-    //ZX\Router::AddRoute('/en', __CLASS__ . "::SetEnLang");
-    //ZX\Router::AddRoute('/en/tutorial', __CLASS__ . "::Tutorial", ['lang' => 'en']);
-    //ZX\Router::AddRoute('/ru/tutorial', __CLASS__ . "::Tutorial", ['lang' => 'ru']);
-    //ZX\Router::AddRoute('/en/prices', __CLASS__ . "::Prices", ['lang' => 'en']);
-    //ZX\Router::AddRoute('/ru/prices', __CLASS__ . "::Prices", ['lang' => 'ru']);
-    //ZX\Router::AddRoute('/en/license', __CLASS__ . "::StaticPage");
-    //ZX\Router::AddRoute('/ru/license', __CLASS__ . "::StaticPage", ['lang' => 'ru']);
-    //ZX\Router::AddRoute('/tutorial/update', __CLASS__ . "::TutorialUpdate");
+

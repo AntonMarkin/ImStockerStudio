@@ -15,7 +15,9 @@ class CreateMenuElementsTable extends Migration
     {
         Schema::create('menu_elements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('order');
+            $table->string('name_ru');
+            $table->string('name_en');
             $table->string('url')->nullable();
             $table->boolean('in_header');
             $table->boolean('in_footer');

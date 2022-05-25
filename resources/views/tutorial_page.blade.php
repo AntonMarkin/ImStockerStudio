@@ -10,11 +10,11 @@
             <div class="main-content">
                 <div class="nav-bar-left-section">
                     <div class="tutorialPage-menu">
-                        {{$tutorialMenu}}}
+                        {{$tutorialMenu}}
                     </div>
                 </div>
                 <div class="main-box">
-                    {{{$tutorialContent}}}
+                    {{$tutorialContent}}
                 </div>
             </div>
         </div>

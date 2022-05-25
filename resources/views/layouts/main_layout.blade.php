@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="{{__('seo.title')}}">
     <meta name="twitter:site" content="studio.imstocker.com">
     <meta name="twitter:creator" content="@imstocker">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 
 </head>
@@ -51,9 +51,6 @@ endif
 
 <!-- /Yandex.Metrika counter -->
 
-<script type="text/javascript" src="{{asset('js/app.js')}}">
-    siteInit();
-</script>
 
 <div class="site-lang-{{\Illuminate\Support\Facades\App::currentLocale()}}">
     <header class="SiteHeader shadowed-block">
@@ -72,41 +69,54 @@ endif
         </div>
         <div class="SiteHeader-center">
             <div class="SiteHeader-center-link">
-                <a href="/">- ImStocker -</a>
+                <a href="/{{\Illuminate\Support\Facades\App::currentLocale()}}">- ImStocker -</a>
             </div>
         </div>
         <div class="SiteHeader-right SiteHeader-menu">
 
             @foreach($headerMenu as $element)
-                @if($element->in_header && $element->is_studio)
-                    <a href="/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}"
-                       class="SiteHeader-menu-one ">
-                        <span class="SiteHeader-menu-one-caption">{{__('menu.'.$element->name)}}</span>
-                    </a>
-                @elseif($element->in_header && !$element->is_studio)
-                    <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="SiteHeader-menu-one ">
-                        <span class="SiteHeader-menu-one-caption">{{__('menu.'.$element->name)}}</span>
-                    </a>
-                @endif
-            @endforeach
+                @if($element->in_header)
+                    @if(\Illuminate\Support\Facades\App::currentLocale()=='en')
+                        @if($element->is_studio)
+                            <a href="/en{{$element->url}}"
+                        @else
+                            <a href="https://imstocker.com/en{{$element->url}}"
+                               @endif
+                               class="SiteHeader-menu-one ">
+                                <span class="SiteHeader-menu-one-caption">{{$element->name_en}}</span>
+                            </a>
+                            @else
+                                @if($element->is_studio)
+                                    <a href="/ru{{$element->url}}"
+                                @else
+                                    <a href="https://imstocker.com/ru{{$element->url}}"
+                                       @endif
+                                   class="SiteHeader-menu-one ">
+                                    <span class="SiteHeader-menu-one-caption">{{$element->name_ru}}</span>
+                                </a>
+                            @endif
+                        @endif
+                        @endforeach
 
-            <div class="SiteHeader-menu-one state-active SiteHeader-menu-lang-switch">
-                <span class="SiteHeader-menu-one-caption">{{\Illuminate\Support\Facades\App::currentLocale()}}</span>
-                @foreach(\Illuminate\Support\Facades\Config::get('app.locales') as $locale)
-                    @if(\Illuminate\Support\Facades\App::currentLocale() != $locale)
-                <div class="SiteHeader-menu-lang-switch-options">
-                    <a rel="nofollow" href="/setlang/{{$locale}}" class="SiteHeader-menu-lang-switch-options-one">
-                        {{$locale}}
-                    </a>
-                </div>
-                    @endif
-                @endforeach
-            </div>
-            <div class="SiteHeader-menu-sidebarButton" onclick="sidebarToggle()">
-                <div class="SiteHeader-menu-sidebarButton-bar"></div>
-                <div class="SiteHeader-menu-sidebarButton-bar"></div>
-                <div class="SiteHeader-menu-sidebarButton-bar"></div>
-            </div>
+                        <div class="SiteHeader-menu-one state-active SiteHeader-menu-lang-switch">
+                            <span
+                                class="SiteHeader-menu-one-caption">{{\Illuminate\Support\Facades\App::currentLocale()}}</span>
+                            @foreach(\Illuminate\Support\Facades\Config::get('app.locales') as $locale)
+                                @if(\Illuminate\Support\Facades\App::currentLocale() != $locale)
+                                    <div class="SiteHeader-menu-lang-switch-options">
+                                        <a rel="nofollow" href="/setlang/{{$locale}}"
+                                           class="SiteHeader-menu-lang-switch-options-one">
+                                            {{$locale}}
+                                        </a>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="SiteHeader-menu-sidebarButton" onclick="sidebarToggle()">
+                            <div class="SiteHeader-menu-sidebarButton-bar"></div>
+                            <div class="SiteHeader-menu-sidebarButton-bar"></div>
+                            <div class="SiteHeader-menu-sidebarButton-bar"></div>
+                        </div>
         </div>
     </header>
     <div class="SiteMain">
@@ -121,7 +131,13 @@ endif
                     <a href="https://imstocker.com" class="footerLink-head">ImStocker</a>
                     @foreach($footerMenu as $element)
                         @if($element->in_footer && !$element->is_studio)
-                            <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
+                            @if(\Illuminate\Support\Facades\App::currentLocale()=='en')
+                                <a href="https://imstocker.com/en{{$element->url}}"
+                                   class="footer-links">{{$element->name_en}}</a>
+                            @else
+                                <a href="https://imstocker.com/ru{{$element->url}}"
+                                   class="footer-links">{{$element->name_ru}}</a>
+                            @endif
                         @endif
                     @endforeach
                 </div>
@@ -130,10 +146,17 @@ endif
                     <a href="/" class="footerLink-head">ImStocker Studio</a>
                     @foreach($footerMenu as $element)
                         @if($element->in_footer && $element->is_studio)
-                            <a href="/{{\Illuminate\Support\Facades\App::currentLocale()}}{{$element->url}}" class="footer-links">{{__('menu.'.$element->name)}}</a>
+                            @if(\Illuminate\Support\Facades\App::currentLocale()=='en')
+                                <a href="https://imstocker.com/en{{$element->url}}"
+                                   class="footer-links">{{$element->name_en}}</a>
+                            @else
+                                <a href="https://imstocker.com/ru{{$element->url}}"
+                                   class="footer-links">{{$element->name_ru}}</a>
+                            @endif
                         @endif
                     @endforeach
-                    <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}/account/cabinet" class="footer-links">{{__('menu.cabinet')}}</a>
+                    <a href="https://imstocker.com/{{\Illuminate\Support\Facades\App::currentLocale()}}/account/cabinet"
+                       class="footer-links">{{__('menu.cabinet')}}</a>
                 </div>
             </div>
 
@@ -172,9 +195,7 @@ endif
                     style="border: 0; overflow: hidden;"
                 ></iframe>
             </div>
-
         </div>
-        -->
     </footer>
 
     <!--<div class="SiteSidebar" onclick="sidebarClose()">
@@ -219,6 +240,10 @@ endif
         </div>
     </div>-->
 
+    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+    <script>
+        siteInit();
+    </script>
 </div>
 </body>
 </html>
