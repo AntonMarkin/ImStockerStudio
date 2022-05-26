@@ -32,14 +32,14 @@ class PricesController extends Controller
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         if ( $status != 201 && $status != 200 ){
-            throw new Exception("Wrong api answer status: " . $status);
+            throw new \Exception("Wrong api answer status: " . $status);
         }
 
         curl_close($curl);
 
         $res = json_decode($json_response, true);
         if (!empty($res['error'])){
-            throw new Exception($res['error']['message']);
+            throw new \Exception($res['error']['message']);
         }
 
         return !empty($res['res']) ? $res['res'] : null;

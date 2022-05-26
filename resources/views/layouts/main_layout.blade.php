@@ -21,8 +21,9 @@
 
 </head>
 <body>
-<!--{<cookie_consent.tpl if($main.user_is_eea_county)>}}
-Yandex.Metrika counter
+@if($is_eea_country)
+@include('cookie_consent')
+<!--Yandex.Metrika counter-->
 <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () {
@@ -40,14 +41,12 @@ Yandex.Metrika counter
         webvisor: true
     });
 </script>
--->
-<!--
-if(!$main.user_is_eea_county)}}
+
+@elseif(!$is_eea_country)}}
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/21447229" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
-endif
--->
+@endif
 
 <!-- /Yandex.Metrika counter -->
 

@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\App;
 use App\Models\MenuElement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Torann\GeoIP\Facades\GeoIP;
 
 class RoutesController extends Controller
 {
+
+
     public function GetFooterMenu()
     {
         $footerMenu = DB::table('menu_elements')
@@ -33,7 +36,15 @@ class RoutesController extends Controller
         $footerMenu = $this->GetFooterMenu();
         $latestInfo = AppDownloadController::GetLatestInfo();
 
-        return view('index_page', compact('latestInfo', 'footerMenu', 'headerMenu'));
+        
+        //dd(geoip()->getLocation('94.181.96.230'));
+        if(\geoip('94.181.96.230')['continent'] = 'EU')
+        {
+            $is_eea_country = true;
+        }
+        else $is_eea_country = false;
+
+        return view('index_page', compact('latestInfo', 'footerMenu', 'headerMenu', 'is_eea_country'));
     }
     public function PricesPage()
     {

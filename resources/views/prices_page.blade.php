@@ -11,7 +11,7 @@
             <div class="content-box-prices-page">
                 <div class="prices_page_pro-version-pic">
 
-                    /payment/features_compare.tpl А тут ничего нет, тк я задолбался всё делать в последний момент
+                    <!--/payment/features_compare.tpl -->
                 </div>
                 <div class="prices-types">
                     <div class="prices-types-child-one">
